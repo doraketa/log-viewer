@@ -36,7 +36,7 @@ class GetFileCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $parser = new HTTPParser(new HTTPRequestRepository());
-        $parser->parse("file.txt");
+        $parser->parse($input->getArgument("filename"));
         dump($parser->getJson());
 
         return Command::SUCCESS;
