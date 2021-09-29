@@ -22,8 +22,11 @@ class HTTPRequestRepository
      *
      * @return array
      */
-    public function getRequests(): array
+    public function getRequests(): ?array
     {
+        if ($this->logs === null) {
+            return null;
+        }
         return $this->logs;
     }
 }

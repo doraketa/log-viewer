@@ -22,7 +22,7 @@ class HTTPRequest
      * @param string $code
      * @return $this
      */
-    public function code(string $code): self
+    public function code(string $code): ?self
     {
         $this->code = $code;
         return $this;

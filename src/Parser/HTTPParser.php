@@ -18,10 +18,10 @@ class HTTPParser extends HTTPRequestRepository
     /**
      * Method for parsing a file line by line.
      *
-     * @param string $fileName
-     * @throws CreatePointerException
+     * @param string $fileName          File Name
+     * @throws CreatePointerException   Pointer Exception
      */
-    public function parse(string $fileName)
+    public function parse(string $fileName): void
     {
         $file = File::openFile($fileName, "r+");
 
