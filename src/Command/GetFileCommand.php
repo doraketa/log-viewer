@@ -34,22 +34,12 @@ class GetFileCommand extends Command
      * @param InputInterface $input                     Interface to input
      * @param OutputInterface $output                   Interface to output
      * @return int                                      Result of open
-     * @throws CreatePointerException                   I/O Exception
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $output->writeln([
-            'Log Parser',
-            '==========',
-            'Filename is: ' . $input->getArgument("filename"),
-            '',
-        ]);
-
         $parser = new HTTPParser(new HTTPRequestRepository());
         $parser->parse("file.txt");
-        $parser->getJson();
-
-        $output->write('The command was executed successfully!');
+        dump($parser->getJson());
 
         return Command::SUCCESS;
     }

@@ -2,10 +2,9 @@
 
 namespace App\Parser;
 
-use App\FileHelper\File;
-use App\Parser\HTTPRequest;
-use App\Parser\HTTPRequestRepository;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
+use App\Exception\CreatePointerException;
+use App\FileHelper\File;
 
 class HTTPParser extends HTTPRequestRepository
 {
@@ -16,6 +15,12 @@ class HTTPParser extends HTTPRequestRepository
         $this->repository = $repository;
     }
 
+    /**
+     * Method for parsing a file line by line.
+     *
+     * @param string $fileName
+     * @throws CreatePointerException
+     */
     public function parse(string $fileName)
     {
         $file = File::openFile($fileName, "r+");
@@ -30,8 +35,6 @@ class HTTPParser extends HTTPRequestRepository
                 $matches
             );
 
-            //preg_match_all($regEx,  $line, $matches, PREG_SET_ORDER);
-
             $request
                 ->url($matches["url"])
                 ->size($matches["contentLength"])
@@ -43,7 +46,12 @@ class HTTPParser extends HTTPRequestRepository
         }
     }
 
-    public function getJson(): void
+    /**
+     * Method for getting a JSON object from a PHP array
+     *
+     * @return string|null
+     */
+    public function getJson(): ?string
     {
         $data = [
             'views'       => 0,
@@ -92,7 +100,7 @@ class HTTPParser extends HTTPRequestRepository
             }
         }
 
-        dump(json_encode($data));
+        return json_encode($data);
     }
 
 
