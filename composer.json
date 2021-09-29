@@ -1,0 +1,21 @@
+{
+    "name": "doraketa/log-viewer",
+    "description": "Simple PHP viewer for web-log",
+    "type": "library",
+    "require": {
+        "symfony/var-dumper": "^5.3"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Doraketa\\LogViewer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Vadim Polyakov",
+            "email": "cachegetfield@yandex.ru"
+        }
+    ],
+    "minimum-stability": "alpha"
+}
