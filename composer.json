@@ -3,12 +3,13 @@
     "description": "Simple PHP viewer for web-log",
     "type": "library",
     "require": {
-        "symfony/var-dumper": "^5.3"
+        "symfony/var-dumper": "^5.3",
+        "symfony/console": "^5.3"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Doraketa\\LogViewer\\": "src/"
+            "App\\Command\\": "src/Command"
         }
     },
     "authors": [
