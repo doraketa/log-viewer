@@ -4,8 +4,6 @@ error_reporting(0);
 
 require_once "vendor/autoload.php";
 
-use App\FileHelper\File;
-
 use Symfony\Component\Console\Application;
 use App\Command;
 

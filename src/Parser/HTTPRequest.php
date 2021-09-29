@@ -2,9 +2,6 @@
 
 namespace App\Parser;
 
-use App\FileHelper\File;
-use http\Encoding\Stream\Inflate;
-
 class HTTPRequest
 {
     /** @var string Storage of CODE */
