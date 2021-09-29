@@ -1,0 +1,12 @@
+<?php
+
+require_once "vendor/autoload.php";
+
+use App\FileHelper\File;
+
+use Symfony\Component\Console\Application;
+use App\Command;
+
+$application = new Application();
+$application->add(new Command\GetFileCommand());
+$application->run();

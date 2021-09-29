@@ -27,6 +27,10 @@ final class File
         return $filePointer;
     }
 
+    /**
+     * @param string $path Path to file
+     * @return string      Normalized Path
+     */
     public static function normalizePath(string $path): string
     {
         $isWindowsShare = strpos($path, '\\\\') === 0;
