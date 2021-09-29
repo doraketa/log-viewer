@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use App\FileHelper\File;
 
 class GetFileCommand extends Command
 {
@@ -32,7 +33,7 @@ class GetFileCommand extends Command
             '',
         ]);
 
-        //Some action to exectue...
+        $inputtedFile = File::openFile($input->getArgument("filename"), "r+");
 
         $output->write('The command was executed successfully!');
 
