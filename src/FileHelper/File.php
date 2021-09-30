@@ -18,6 +18,7 @@ final class File
      * @param resource $context         Resource with context
      * @throws CreatePointerException
      */
+
     public static function openFile(string $filename, string $mode, bool $useIncludePath =  false, $context = null)
     {
         $filePointer = fopen($filename, $mode, $useIncludePath, $context);
