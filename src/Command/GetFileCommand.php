@@ -2,12 +2,13 @@
 
 namespace App\Command;
 
-use App\Parser\HTTPParser;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Command\Command;
+use App\Exception\CreatePointerException;
 use App\Parser\HTTPRequestRepository;
+use App\Parser\HTTPParser;
 
 class GetFileCommand extends Command
 {
@@ -21,14 +22,14 @@ class GetFileCommand extends Command
      */
     protected function configure(): void
     {
-        $this
-            ->addArgument("filename", InputArgument::REQUIRED, "Input file name");
+        $this->addArgument("filename", InputArgument::REQUIRED, "Input file name");
     }
 
     /**
-     * @param InputInterface $input                     Interface to input
-     * @param OutputInterface $output                   Interface to output
+     * @param InputInterface $input Interface to input
+     * @param OutputInterface $output Interface to output
      * @return int                                      Result of open
+     * @throws CreatePointerException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
