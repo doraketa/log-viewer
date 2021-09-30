@@ -29,11 +29,7 @@ class HTTPParser extends HTTPRequestRepository
         while (!feof($file)) {
             $line = fgets($file);
             $request = new HTTPRequest();
-            preg_match(
-                $regexPattern,
-                $line,
-                $matches
-            );
+            preg_match($regexPattern, $line, $matches);
 
             $request
                 ->url($matches["url"])
