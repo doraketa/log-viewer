@@ -16,9 +16,6 @@ class GetFileCommand extends Command
     /** @var string Command name */
     protected static string $defaultName = "parser";
 
-    /** @var string Local requirements for file name */
-    private string $requireFilename;
-
     /**
      * Command configuration
      */
