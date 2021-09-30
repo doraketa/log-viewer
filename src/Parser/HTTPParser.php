@@ -24,13 +24,13 @@ class HTTPParser extends HTTPRequestRepository
     public function parse(string $fileName): void
     {
         $file = File::openFile($fileName, "r+");
+        $regexPattern = '/"\w+ (?<url>[\S]+).+" (?<statusCode>\d+) (?<contentLength>\d*)(.+".*" "(?<userAgent>.*)")?/';
 
-        while (!feof($file))
-        {
+        while (!feof($file)) {
             $line = fgets($file);
             $request = new HTTPRequest();
             preg_match(
-                '/"\w+ (?<url>[\S]+).+" (?<statusCode>\d+) (?<contentLength>\d*)(.+".*" "(?<userAgent>.*)")?/',
+                $regexPattern,
                 $line,
                 $matches
             );
@@ -42,7 +42,7 @@ class HTTPParser extends HTTPRequestRepository
                 ->userAgent($matches["userAgent"]);
 
             $this->repository->save($request);
-            unset ($request);
+            unset($request);
         }
     }
 
@@ -66,8 +66,7 @@ class HTTPParser extends HTTPRequestRepository
 
         $logs = $this->repository->getRequests();
 
-        foreach ($logs as $log)
-        {
+        foreach ($logs as $log) {
             // Подсчет уникальных URL;
             $url = $log->getUrl();
             $size = $log->getSize();
@@ -102,6 +101,4 @@ class HTTPParser extends HTTPRequestRepository
 
         return json_encode($data);
     }
-
-
 }
